@@ -1,10 +1,10 @@
 const MySqli = require("mysqli");
 
-let conn = new Mysqli({
+let conn = new MySqli({
     Host: 'localhost', // IP/domain name 
     post: 3306, // port, default 3306 
-    user: 'carlos', // username 
-    passwd: '1234', // password 
+    user: 'root', // username 
+    passwd: '', // password 
     db: 'mega_shop'
 });
 
