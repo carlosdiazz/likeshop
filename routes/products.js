@@ -45,7 +45,7 @@ router.get('/', function(req, res,) {
               products: prods
           });
       } else {
-        res.json({message: "No products found"});
+        res.json({message: "No se encontraron productos"});
       }
   })
   .catch(err => res.json(err));
