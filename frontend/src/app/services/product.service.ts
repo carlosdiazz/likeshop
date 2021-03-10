@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { from } from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { url } from 'inspector';
+import { Observable } from 'rxjs';
+import {ProductModelServer, serverResponse} from "../models/product.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
-  SERVER_URL= environment.SERVER_URL;
+  private url = environment.serverURL;
   constructor( private http: HttpClient){ }
 
   /*Aqui voy a obtener los productos del backend */
-  getallProducts(){
-    return this.http.get(url: this.SERVER_URL+'/products');
+  getAllProducts(limitOfResults=10): Observable<serverResponse> {
+    return this.http.get<serverResponse>(this.url + 'products', {
+      params: {
+        limit: limitOfResults.toString()
+      }
+    });
   }
   }
 
